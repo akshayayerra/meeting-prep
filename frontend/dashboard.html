@@ -12,7 +12,6 @@
 
     <title>Dashboard — Meeting Memory AI</title>
 
-
     <style>
 
         * {
@@ -284,69 +283,6 @@
 
 
         /* =================================
-           WHAT I REMEMBER
-        ================================= */
-
-        .memories {
-            background: white;
-
-            border: 1px solid #e5e7eb;
-
-            border-radius: 14px;
-
-            overflow: hidden;
-
-            margin-bottom: 30px;
-        }
-
-
-        .memory-card {
-            padding: 20px 22px;
-
-            border-bottom:
-                1px solid #f1f5f9;
-        }
-
-
-        .memory-card:last-child {
-            border-bottom: none;
-        }
-
-
-        .memory-type {
-            font-size: 12px;
-
-            font-weight: 600;
-
-            color: #6b7280;
-
-            margin-bottom: 7px;
-
-            text-transform: capitalize;
-        }
-
-
-        .memory-text {
-            font-size: 14px;
-
-            line-height: 1.6;
-
-            color: #111827;
-
-            white-space: pre-wrap;
-        }
-
-
-        .no-memory {
-            padding: 22px;
-
-            color: #6b7280;
-
-            font-size: 14px;
-        }
-
-
-        /* =================================
            PROFILE MENU
         ================================= */
 
@@ -497,7 +433,7 @@
 
 <!-- =====================================================
      MAIN CONTENT
-====================================================== -->
+===================================================== -->
 
 <main>
 
@@ -656,27 +592,6 @@
 
 
 
-    <!-- =================================================
-         WHAT I REMEMBER
-    ================================================== -->
-
-    <div class="section-title">
-        What I Remember
-    </div>
-
-
-    <div
-        class="memories"
-        id="memoryList"
-    >
-
-        <div class="no-memory">
-            Loading your memories...
-        </div>
-
-    </div>
-
-
 </main>
 
 
@@ -700,6 +615,7 @@
         );
 
 
+
     /* =====================================================
        CHECK LOGIN
     ===================================================== */
@@ -711,6 +627,7 @@
         );
 
     }
+
 
 
     /* =====================================================
@@ -734,6 +651,7 @@
                 .toUpperCase();
 
     }
+
 
 
     /* =====================================================
@@ -782,6 +700,7 @@
     );
 
 
+
     /* =====================================================
        LOGOUT
     ===================================================== */
@@ -807,6 +726,7 @@
     );
 
 
+
     /* =====================================================
        CLOSE PROFILE MENU
     ===================================================== */
@@ -830,6 +750,7 @@
     );
 
 
+
     /* =====================================================
        PREPARE A NEW MEETING
     ===================================================== */
@@ -847,6 +768,7 @@
 
             }
         );
+
 
 
     /* =====================================================
@@ -927,112 +849,6 @@
     }
 
 
-    /* =====================================================
-       DISPLAY MEMORIES
-    ===================================================== */
-
-    function displayMemories(
-        memories
-    ) {
-
-        const memoryList =
-            document.getElementById(
-                "memoryList"
-            );
-
-
-        memoryList.innerHTML =
-            "";
-
-
-        /* =============================================
-           NO MEMORIES
-        ============================================= */
-
-        if (
-            !memories ||
-            memories.length === 0
-        ) {
-
-            memoryList.innerHTML = `
-
-                <div class="no-memory">
-                    No previous memories found.
-                </div>
-
-            `;
-
-            return;
-
-        }
-
-
-        /* =============================================
-           DISPLAY EACH MEMORY
-        ============================================= */
-
-        memories.forEach(
-            function (memory) {
-
-                const memoryCard =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                memoryCard.className =
-                    "memory-card";
-
-
-                const memoryType =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                memoryType.className =
-                    "memory-type";
-
-
-                memoryType.textContent =
-                    memory.type ||
-                    "Memory";
-
-
-                const memoryText =
-                    document.createElement(
-                        "div"
-                    );
-
-
-                memoryText.className =
-                    "memory-text";
-
-
-                memoryText.textContent =
-                    memory.text ||
-                    "";
-
-
-                memoryCard.appendChild(
-                    memoryType
-                );
-
-
-                memoryCard.appendChild(
-                    memoryText
-                );
-
-
-                memoryList.appendChild(
-                    memoryCard
-                );
-
-            }
-        );
-
-    }
-
 
     /* =====================================================
        LOAD USER-SPECIFIC DASHBOARD
@@ -1061,6 +877,7 @@
                 return;
 
             }
+
 
 
             /* =============================================
@@ -1099,6 +916,7 @@
             }
 
 
+
             /* =============================================
                UPDATE STATISTICS
             ============================================= */
@@ -1121,14 +939,6 @@
                 data.stats.pending_commitments;
 
 
-            /* =============================================
-               DISPLAY USER-SPECIFIC MEMORIES
-            ============================================= */
-
-            displayMemories(
-                data.memories || []
-            );
-
 
             /* =============================================
                UPDATE RECENT MEETINGS
@@ -1142,6 +952,7 @@
 
             meetingsContainer.innerHTML =
                 "";
+
 
 
             /* =============================================
@@ -1182,6 +993,7 @@
             }
 
 
+
             /* =============================================
                DISPLAY MEETINGS
             ============================================= */
@@ -1204,6 +1016,7 @@
                         "pointer";
 
 
+
                     /* =================================
                        OPEN BRIEF
                     ================================= */
@@ -1222,6 +1035,7 @@
                     );
 
 
+
                     /* =================================
                        LEFT SECTION
                     ================================= */
@@ -1230,6 +1044,7 @@
                         document.createElement(
                             "div"
                         );
+
 
 
                     /* =================================
@@ -1249,6 +1064,7 @@
                     person.textContent =
                         meeting.person_name ||
                         "Unknown person";
+
 
 
                     /* =================================
@@ -1317,6 +1133,7 @@
                     );
 
 
+
                     /* =================================
                        DATE
                     ================================= */
@@ -1335,6 +1152,7 @@
                         formatMeetingDate(
                             meeting.meeting_date
                         );
+
 
 
                     /* =================================
@@ -1393,20 +1211,10 @@
 
             `;
 
-
-            document.getElementById(
-                "memoryList"
-            ).innerHTML = `
-
-                <div class="no-memory">
-                    Unable to load your memories.
-                </div>
-
-            `;
-
         }
 
     }
+
 
 
     /* =====================================================
